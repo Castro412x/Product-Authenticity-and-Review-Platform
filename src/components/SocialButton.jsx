@@ -1,3 +1,5 @@
+import { Apple } from 'lucide-react'
+
 export default function SocialButton({ icon, label }) {
   return (
     <button className="flex items-center justify-center gap-2 w-full border border-gray-300 rounded-lg py-2.5 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200">
