@@ -5,14 +5,14 @@ import Button from './Button'
 
 export default function CTA() {
   return (
-    <section className="py-16 lg:py-24">
+    <section className="py-16 lg:py-24 bg-white dark:bg-gray-900">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="bg-[#0A4E9B] rounded-2xl p-8 lg:p-12 flex flex-col lg:flex-row items-center justify-between gap-8"
+          className="bg-[#0A4E9B] dark:bg-[#062D5C] rounded-2xl p-8 lg:p-12 flex flex-col lg:flex-row items-center justify-between gap-8"
         >
           <div className="text-center lg:text-left">
             <h3 className="text-2xl lg:text-3xl font-extrabold text-white mb-3">

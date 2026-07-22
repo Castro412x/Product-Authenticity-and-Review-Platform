@@ -54,12 +54,12 @@ const steps = [
 
 export default function Home() {
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white dark:bg-gray-900 min-h-screen">
       <Navbar />
 
       <Hero />
 
-      <section id="solutions" className="bg-[#F8FAFC] py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
+      <section id="solutions" className="bg-[#F8FAFC] dark:bg-gray-800 py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-[1280px] mx-auto">
           <SectionTitle
             title="Your Comprehensive Safety Hub"

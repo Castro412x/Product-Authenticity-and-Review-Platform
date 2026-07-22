@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { ShieldCheck, Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Button from './Button'
+import ThemeToggle from './ThemeToggle'
 
 const defaultLinks = [
   { label: 'Solutions', href: '#solutions' },
@@ -47,12 +48,14 @@ export default function Navbar({ links, showLogin = true }) {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-md shadow-md' : 'bg-white'
+        scrolled
+          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-md'
+          : 'bg-white dark:bg-gray-900'
       }`}
     >
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <Link to="/" className="flex items-center gap-2 text-[#0B3B6E] font-extrabold text-lg shrink-0">
+          <Link to="/" className="flex items-center gap-2 text-[#0B3B6E] dark:text-[#3B82F6] font-extrabold text-lg shrink-0">
             <ShieldCheck className="w-7 h-7" />
             MedTrust Africa
           </Link>
@@ -60,7 +63,7 @@ export default function Navbar({ links, showLogin = true }) {
           <div className="hidden lg:flex items-center gap-1">
             {navLinks.map(({ label, href }) => {
               const sectionId = href.startsWith('/') ? '' : href.slice(1)
-              const isActive = isExternal(href)
+              const isActiveLink = isExternal(href)
                 ? pathname === href
                 : activeSection === sectionId
               const Comp = isExternal(href) ? Link : 'a'
@@ -70,9 +73,9 @@ export default function Navbar({ links, showLogin = true }) {
                   to={isExternal(href) ? href : undefined}
                   href={isExternal(href) ? undefined : href}
                   className={`text-sm font-medium px-3 py-2 border-b-2 transition-colors ${
-                    isActive
-                      ? 'text-[#0B3B6E] border-[#0B3B6E]'
-                      : 'text-gray-600 border-transparent hover:text-[#0B3B6E]'
+                    isActiveLink
+                      ? 'text-[#0B3B6E] dark:text-[#3B82F6] border-[#0B3B6E] dark:border-[#3B82F6]'
+                      : 'text-gray-600 dark:text-gray-400 border-transparent hover:text-[#0B3B6E] dark:hover:text-[#3B82F6]'
                   }`}
                 >
                   {label}
@@ -81,22 +84,26 @@ export default function Navbar({ links, showLogin = true }) {
             })}
           </div>
 
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2">
+            <ThemeToggle />
             {showLogin && (
-              <Link to="/login" className="text-sm font-medium text-gray-600 hover:text-[#0B3B6E] transition-colors px-3 py-2">
+              <Link to="/login" className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-[#0B3B6E] dark:hover:text-[#3B82F6] transition-colors px-3 py-2">
                 Login
               </Link>
             )}
             <Button to="/signup" variant="primary">Get Started</Button>
           </div>
 
-          <button
-            onClick={() => setOpen(!open)}
-            className="lg:hidden p-2 text-gray-600 hover:text-[#0B3B6E]"
-            aria-label="Toggle menu"
-          >
-            {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="flex lg:hidden items-center gap-2">
+            <ThemeToggle />
+            <button
+              onClick={() => setOpen(!open)}
+              className="p-2 text-gray-600 dark:text-gray-400 hover:text-[#0B3B6E] dark:hover:text-[#3B82F6]"
+              aria-label="Toggle menu"
+            >
+              {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -106,7 +113,7 @@ export default function Navbar({ links, showLogin = true }) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="lg:hidden overflow-hidden bg-white border-t border-gray-100"
+            className="lg:hidden overflow-hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800"
           >
             <div className="px-4 py-4 space-y-3">
               {navLinks.map(({ label, href }) => {
@@ -116,17 +123,17 @@ export default function Navbar({ links, showLogin = true }) {
                     key={label}
                     to={isExternal(href) ? href : undefined}
                     href={isExternal(href) ? undefined : href}
-                    className="block text-sm font-medium text-gray-600 hover:text-[#0B3B6E] py-1"
+                    className="block text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-[#0B3B6E] dark:hover:text-[#3B82F6] py-1"
                   >
                     {label}
                   </Comp>
                 )
               })}
-              <hr className="border-gray-100" />
+              <hr className="border-gray-100 dark:border-gray-800" />
               {showLogin && (
-                <Link to="/login" className="block text-sm font-medium text-[#0B3B6E] py-1">Login</Link>
+                <Link to="/login" className="block text-sm font-medium text-[#0B3B6E] dark:text-[#3B82F6] py-1">Login</Link>
               )}
-              <Link to="/signup" className="block text-center bg-[#0B3B6E] text-white font-semibold rounded-lg text-sm px-6 py-2.5">Get Started</Link>
+              <Link to="/signup" className="block text-center bg-[#0B3B6E] dark:bg-[#3B82F6] text-white font-semibold rounded-lg text-sm px-6 py-2.5">Get Started</Link>
             </div>
           </motion.div>
         )}

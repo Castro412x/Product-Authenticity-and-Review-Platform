@@ -20,7 +20,7 @@ const nodes = [
 
 export default function NetworkSection() {
   return (
-    <section className="bg-[#0A4E9B] py-16 lg:py-24">
+    <section className="bg-[#0A4E9B] dark:bg-[#062D5C] py-16 lg:py-24">
       <Container>
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -38,8 +38,8 @@ export default function NetworkSection() {
             <div className="grid grid-cols-2 gap-4">
               {stats.map((s) => (
                 <Card key={s.label} className="p-4 text-center">
-                  <div className="text-2xl font-extrabold text-[#0A4E9B]">{s.value}</div>
-                  <div className="text-xs text-gray-500 mt-1">{s.label}</div>
+                  <div className="text-2xl font-extrabold text-[#0A4E9B] dark:text-[#3B82F6]">{s.value}</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">{s.label}</div>
                 </Card>
               ))}
             </div>

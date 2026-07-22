@@ -12,12 +12,12 @@ export default function Hero() {
           transition={{ duration: 0.7 }}
           className="flex-1 text-center lg:text-left"
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight mb-6">
             Helping You Make<br />
             <span className="text-[#22C55E]">Safer Medicine</span><br />
             Decisions.
           </h1>
-          <p className="text-gray-500 text-sm sm:text-base leading-relaxed max-w-lg mx-auto lg:mx-0 mb-8">
+          <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base leading-relaxed max-w-lg mx-auto lg:mx-0 mb-8">
             Verify medicine information, receive safety alerts, and access reliable educational resources, all in one trusted platform.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
@@ -53,7 +53,7 @@ export default function Hero() {
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute -top-6 -right-6 z-20 w-40 h-40 rounded-xl overflow-hidden shadow-xl border-4 border-white"
+            className="absolute -top-6 -right-6 z-20 w-40 h-40 rounded-xl overflow-hidden shadow-xl border-4 border-white dark:border-gray-800"
           >
             <img
               src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=200&q=80"

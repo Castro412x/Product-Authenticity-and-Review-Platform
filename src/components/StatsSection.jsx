@@ -12,7 +12,7 @@ export default function StatsSection() {
   const inView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section className="bg-[#0B3B6E] py-16 px-4 sm:px-6 lg:px-8" ref={ref}>
+    <section className="bg-[#0B3B6E] dark:bg-[#0A2F5A] py-16 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-[1280px] mx-auto">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-12 sm:gap-24">
           {stats.map((s) => (

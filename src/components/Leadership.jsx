@@ -25,7 +25,7 @@ const leaders = [
 
 export default function Leadership() {
   return (
-    <section className="py-16 lg:py-24">
+    <section className="py-16 lg:py-24 bg-white dark:bg-gray-900">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -34,10 +34,10 @@ export default function Leadership() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4">
+          <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">
             Executive Leadership & Strategic Counsel
           </h2>
-          <p className="text-gray-500 max-w-2xl mx-auto text-sm leading-relaxed">
+          <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-sm leading-relaxed">
             Our team brings together decades of experience in medicine safety, technology, and public health across the African continent.
           </p>
         </motion.div>
@@ -51,9 +51,9 @@ export default function Leadership() {
                 className="w-24 h-24 rounded-full object-cover mx-auto mb-4 shadow-md"
                 loading="lazy"
               />
-              <h3 className="font-bold text-gray-900 text-lg">{person.name}</h3>
-              <p className="text-[#0A4E9B] text-sm font-medium mb-3">{person.role}</p>
-              <p className="text-gray-500 text-sm leading-relaxed">{person.description}</p>
+              <h3 className="font-bold text-gray-900 dark:text-white text-lg">{person.name}</h3>
+              <p className="text-[#0A4E9B] dark:text-[#3B82F6] text-sm font-medium mb-3">{person.role}</p>
+              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{person.description}</p>
             </Card>
           ))}
         </div>

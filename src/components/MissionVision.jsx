@@ -23,7 +23,7 @@ const data = [
 
 export default function MissionVision() {
   return (
-    <section className="py-16 lg:py-24">
+    <section className="py-16 lg:py-24 bg-white dark:bg-gray-900">
       <Container>
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           {data.map((item, i) => (
@@ -34,11 +34,11 @@ export default function MissionVision() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
             >
-              <div className="bg-[#EAF3FF] rounded-lg p-3 w-fit mb-4">
-                <item.icon className="w-6 h-6 text-[#0A4E9B]" />
+              <div className="bg-[#EAF3FF] dark:bg-blue-900/30 rounded-lg p-3 w-fit mb-4">
+                <item.icon className="w-6 h-6 text-[#0A4E9B] dark:text-[#3B82F6]" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">{item.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-6">{item.description}</p>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">{item.title}</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-6">{item.description}</p>
               <img
                 src={item.img}
                 alt={item.alt}

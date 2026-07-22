@@ -21,9 +21,9 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <div className="flex max-w-[1200px] w-full rounded-2xl shadow-2xl overflow-hidden min-h-[600px]">
-        <div className="hidden md:flex w-1/2 bg-gradient-to-b from-[#0B3B6E] to-[#0A4E8C] flex-col relative p-10">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-800 p-4">
+      <div className="flex max-w-[1200px] w-full rounded-2xl shadow-2xl dark:shadow-gray-900/50 overflow-hidden min-h-[600px]">
+        <div className="hidden md:flex w-1/2 bg-gradient-to-b from-[#0B3B6E] to-[#0A4E8C] dark:from-[#0A2F5A] dark:to-[#062D5C] flex-col relative p-10">
           <div className="bg-white/15 rounded-full p-2.5 w-fit mb-8">
             <ShieldCheck className="w-7 h-7 text-white" />
           </div>
@@ -50,9 +50,9 @@ export default function Login() {
           </div>
         </div>
 
-        <div className="w-full md:w-1/2 bg-white p-8 lg:p-12 flex flex-col justify-center">
-          <h2 className="text-2xl lg:text-3xl font-extrabold text-gray-900 mb-1">Log in to your account</h2>
-          <p className="text-gray-500 text-sm mb-8">Welcome back! Please enter your details.</p>
+        <div className="w-full md:w-1/2 bg-white dark:bg-gray-900 p-8 lg:p-12 flex flex-col justify-center">
+          <h2 className="text-2xl lg:text-3xl font-extrabold text-gray-900 dark:text-white mb-1">Log in to your account</h2>
+          <p className="text-gray-500 dark:text-gray-400 text-sm mb-8">Welcome back! Please enter your details.</p>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <AuthInput
@@ -78,21 +78,21 @@ export default function Login() {
             />
 
             <label className="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600" />
-              <span className="text-sm text-gray-600">Remember me for 30 days</span>
+              <input type="checkbox" className="w-4 h-4 rounded border-gray-300 dark:border-gray-600 text-blue-600 dark:text-[#3B82F6] focus:ring-blue-600 bg-white dark:bg-gray-800" />
+              <span className="text-sm text-gray-600 dark:text-gray-400">Remember me for 30 days</span>
             </label>
 
             <PrimaryButton loading={loading}>Log In</PrimaryButton>
           </form>
 
           <div className="flex items-center gap-3 my-6">
-            <span className="flex-1 h-px bg-gray-200" />
-            <span className="text-xs text-gray-400 font-medium">Or log in with</span>
-            <span className="flex-1 h-px bg-gray-200" />
+            <span className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
+            <span className="text-xs text-gray-400 dark:text-gray-500 font-medium">Or log in with</span>
+            <span className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
           </div>
 
           <div className="flex gap-3">
-            <button className="flex items-center justify-center gap-2 w-full border border-gray-300 rounded-lg py-2.5 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200">
+            <button className="flex items-center justify-center gap-2 w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 rounded-lg py-2.5 px-4 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition-colors duration-200">
               <svg width="20" height="20" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" />
                 <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
@@ -101,20 +101,20 @@ export default function Login() {
               </svg>
               Google
             </button>
-            <button className="flex items-center justify-center gap-2 w-full border border-gray-300 rounded-lg py-2.5 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200">
+            <button className="flex items-center justify-center gap-2 w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 rounded-lg py-2.5 px-4 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition-colors duration-200">
               <Apple className="w-5 h-5" />
               Apple
             </button>
           </div>
 
-          <p className="text-center text-sm text-gray-600 mt-6">
+          <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-6">
             Don&apos;t have an account?{' '}
-            <Link to="/signup" className="text-blue-600 font-semibold hover:underline">
+            <Link to="/signup" className="text-blue-600 dark:text-[#3B82F6] font-semibold hover:underline">
               Sign up here
             </Link>
           </p>
 
-          <div className="flex items-center justify-center gap-1.5 mt-6 text-gray-400 text-xs">
+          <div className="flex items-center justify-center gap-1.5 mt-6 text-gray-400 dark:text-gray-500 text-xs">
             <Lock className="w-3.5 h-3.5" />
             Protected by industry-standard encryption
           </div>
