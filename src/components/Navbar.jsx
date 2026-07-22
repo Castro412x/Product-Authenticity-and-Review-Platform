@@ -4,18 +4,20 @@ import { ShieldCheck, Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Button from './Button'
 
-const navLinks = [
+const defaultLinks = [
   { label: 'Solutions', href: '#solutions' },
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'Medicine Safety', href: '#medicine-safety' },
-  { label: 'About', href: '#about' },
+  { label: 'About', href: '/about' },
 ]
 
-export default function Navbar() {
+export default function Navbar({ links, showLogin = true }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const { pathname } = useLocation()
+
+  const navLinks = links || defaultLinks
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -38,7 +40,9 @@ export default function Navbar() {
       return observer
     })
     return () => observers.forEach((o) => o?.disconnect())
-  }, [pathname])
+  }, [pathname, navLinks])
+
+  const isExternal = (href) => href.startsWith('/')
 
   return (
     <nav
@@ -55,11 +59,16 @@ export default function Navbar() {
 
           <div className="hidden lg:flex items-center gap-1">
             {navLinks.map(({ label, href }) => {
-              const isActive = activeSection === href.slice(1)
+              const sectionId = href.startsWith('/') ? '' : href.slice(1)
+              const isActive = isExternal(href)
+                ? pathname === href
+                : activeSection === sectionId
+              const Comp = isExternal(href) ? Link : 'a'
               return (
-                <a
+                <Comp
                   key={label}
-                  href={href}
+                  to={isExternal(href) ? href : undefined}
+                  href={isExternal(href) ? undefined : href}
                   className={`text-sm font-medium px-3 py-2 border-b-2 transition-colors ${
                     isActive
                       ? 'text-[#0B3B6E] border-[#0B3B6E]'
@@ -67,15 +76,17 @@ export default function Navbar() {
                   }`}
                 >
                   {label}
-                </a>
+                </Comp>
               )
             })}
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            <Link to="/login" className="text-sm font-medium text-gray-600 hover:text-[#0B3B6E] transition-colors px-3 py-2">
-              Login
-            </Link>
+            {showLogin && (
+              <Link to="/login" className="text-sm font-medium text-gray-600 hover:text-[#0B3B6E] transition-colors px-3 py-2">
+                Login
+              </Link>
+            )}
             <Button to="/signup" variant="primary">Get Started</Button>
           </div>
 
@@ -98,11 +109,23 @@ export default function Navbar() {
             className="lg:hidden overflow-hidden bg-white border-t border-gray-100"
           >
             <div className="px-4 py-4 space-y-3">
-              {navLinks.map(({ label, href }) => (
-                <a key={label} href={href} className="block text-sm font-medium text-gray-600 hover:text-[#0B3B6E] py-1">{label}</a>
-              ))}
+              {navLinks.map(({ label, href }) => {
+                const Comp = isExternal(href) ? Link : 'a'
+                return (
+                  <Comp
+                    key={label}
+                    to={isExternal(href) ? href : undefined}
+                    href={isExternal(href) ? undefined : href}
+                    className="block text-sm font-medium text-gray-600 hover:text-[#0B3B6E] py-1"
+                  >
+                    {label}
+                  </Comp>
+                )
+              })}
               <hr className="border-gray-100" />
-              <Link to="/login" className="block text-sm font-medium text-[#0B3B6E] py-1">Login</Link>
+              {showLogin && (
+                <Link to="/login" className="block text-sm font-medium text-[#0B3B6E] py-1">Login</Link>
+              )}
               <Link to="/signup" className="block text-center bg-[#0B3B6E] text-white font-semibold rounded-lg text-sm px-6 py-2.5">Get Started</Link>
             </div>
           </motion.div>

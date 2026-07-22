@@ -89,7 +89,7 @@ export default function Home() {
 
       <div id="medicine-safety"><StatsSection /></div>
 
-      <div id="about"><Footer /></div>
+      <Footer />
     </div>
   )
 }
