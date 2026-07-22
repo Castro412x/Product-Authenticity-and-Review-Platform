@@ -55,7 +55,7 @@ export default function LeftPanel() {
 
       <div className="px-8 py-4 border-t border-white/10">
         <p className="text-blue-300 text-xs">
-          &copy; 2024 MedTrust Africa. Precision in Healthcare.
+          &copy; 2026 MedTrust Africa. Precision in Healthcare.
         </p>
       </div>
     </div>
