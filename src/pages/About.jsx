@@ -7,35 +7,15 @@ import Leadership from '../components/Leadership'
 import CTA from '../components/CTA'
 import Footer from '../components/Footer'
 
-const aboutNavLinks = [
-  { label: 'Platform', href: '#platform' },
-  { label: 'Supply Chain', href: '#supply-chain' },
-  { label: 'Network', href: '#network' },
-  { label: 'About', href: '/about' },
-  { label: 'Impact', href: '#impact' },
-]
-
 export default function About() {
   return (
     <div className="bg-white min-h-screen">
-      <Navbar links={aboutNavLinks} showLogin={false} />
+      <Navbar />
 
-      <div id="platform">
-        <AboutHero />
-      </div>
-
-      <div id="supply-chain">
-        <MissionVision />
-      </div>
-
-      <div id="impact">
-        <Foundation />
-      </div>
-
-      <div id="network">
-        <NetworkSection />
-      </div>
-
+      <AboutHero />
+      <MissionVision />
+      <Foundation />
+      <NetworkSection />
       <Leadership />
       <CTA />
       <Footer />
