@@ -2,9 +2,9 @@ import { motion } from 'framer-motion'
 import { ShieldCheck } from 'lucide-react'
 
 const infoBlocks = [
-  { label: 'Established', value: '2018' },
-  { label: 'HQ', value: 'Nairobi, Kenya' },
-  { label: 'Coverage', value: 'Pan-African (15 Nations)' },
+  { label: 'Established', value: '2026' },
+  { label: 'HQ', value: 'Aba, Abia State' },
+  { label: 'Coverage', value: 'Aba, Abia State Nigeria' },
 ]
 
 export default function AboutHero() {
