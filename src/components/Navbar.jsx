@@ -1,20 +1,44 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { ShieldCheck, Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Button from './Button'
 
-const navLinks = ['Solutions', 'How It Works', 'Medicine Safety', 'About']
+const navLinks = [
+  { label: 'Solutions', href: '#solutions' },
+  { label: 'How It Works', href: '#how-it-works' },
+  { label: 'Medicine Safety', href: '#medicine-safety' },
+  { label: 'About', href: '#about' },
+]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
+  const { pathname } = useLocation()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  useEffect(() => {
+    const ids = navLinks.map((l) => l.href.slice(1))
+    const observers = ids.map((id) => {
+      const el = document.getElementById(id)
+      if (!el) return null
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id)
+        },
+        { rootMargin: '-40% 0px -55% 0px' }
+      )
+      observer.observe(el)
+      return observer
+    })
+    return () => observers.forEach((o) => o?.disconnect())
+  }, [pathname])
 
   return (
     <nav
@@ -29,12 +53,23 @@ export default function Navbar() {
             MedTrust Africa
           </Link>
 
-          <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a key={link} href="#" className="text-sm font-medium text-gray-600 hover:text-[#0B3B6E] transition-colors">
-                {link}
-              </a>
-            ))}
+          <div className="hidden lg:flex items-center gap-1">
+            {navLinks.map(({ label, href }) => {
+              const isActive = activeSection === href.slice(1)
+              return (
+                <a
+                  key={label}
+                  href={href}
+                  className={`text-sm font-medium px-3 py-2 border-b-2 transition-colors ${
+                    isActive
+                      ? 'text-[#0B3B6E] border-[#0B3B6E]'
+                      : 'text-gray-600 border-transparent hover:text-[#0B3B6E]'
+                  }`}
+                >
+                  {label}
+                </a>
+              )
+            })}
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
@@ -63,8 +98,8 @@ export default function Navbar() {
             className="lg:hidden overflow-hidden bg-white border-t border-gray-100"
           >
             <div className="px-4 py-4 space-y-3">
-              {navLinks.map((link) => (
-                <a key={link} href="#" className="block text-sm font-medium text-gray-600 hover:text-[#0B3B6E] py-1">{link}</a>
+              {navLinks.map(({ label, href }) => (
+                <a key={label} href={href} className="block text-sm font-medium text-gray-600 hover:text-[#0B3B6E] py-1">{label}</a>
               ))}
               <hr className="border-gray-100" />
               <Link to="/login" className="block text-sm font-medium text-[#0B3B6E] py-1">Login</Link>

@@ -59,7 +59,7 @@ export default function Home() {
 
       <Hero />
 
-      <section className="bg-[#F8FAFC] py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
+      <section id="solutions" className="bg-[#F8FAFC] py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-[1280px] mx-auto">
           <SectionTitle
             title="Your Comprehensive Safety Hub"
@@ -73,7 +73,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
+      <section id="how-it-works" className="py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-[1280px] mx-auto">
           <SectionTitle
             title="How this Platform Empowers You"
@@ -87,9 +87,9 @@ export default function Home() {
         </div>
       </section>
 
-      <StatsSection />
+      <div id="medicine-safety"><StatsSection /></div>
 
-      <Footer />
+      <div id="about"><Footer /></div>
     </div>
   )
 }
