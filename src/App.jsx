@@ -1,12 +1,11 @@
 import { Routes, Route } from 'react-router-dom'
-import LeftPanel from './components/LeftPanel'
-import RightPanel from './components/RightPanel'
+import Signup from './pages/Signup'
+import Login from './pages/Login'
 
-function HomePage() {
+function Dashboard() {
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen">
-      <LeftPanel />
-      <RightPanel />
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <p className="text-2xl font-bold text-gray-800">Welcome to your Dashboard</p>
     </div>
   )
 }
@@ -14,8 +13,10 @@ function HomePage() {
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/login" element={<HomePage />} />
+      <Route path="/" element={<Signup />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   )
 }
